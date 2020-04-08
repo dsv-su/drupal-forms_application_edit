@@ -1,0 +1,48 @@
+.view-course-catalogue a:visited {
+  color: #005b7f;
+}
+
+.view-course-catalogue a:hover {
+  color: black;
+}
+
+.view-course-catalogue, .view-course-catalogue a {
+  font-size: 14px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.view-course-catalogue .views-field-title {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.view-course-catalogue .views-field-body .field-content {
+  margin: 10px 0px 20px;
+}
+
+.view-course-catalogue .views-field-field-application-date .field-content {
+  margin: 10px 0px 20px;
+  display: inline;
+}
+
+.view-course-catalogue .views-field-field-application-date .field-content p {
+  margin: 10px 0 20px;
+  font-weight: 600;
+}
+
+.view-course-catalogue .views-field-field-application-date .field-content .date-display-range {
+  font-weight: 600;
+}
+
+.view-course-catalogue .views-row {
+  margin-top: 20px;
+  padding: 10px;
+}
+
+.view-course-catalogue .views-row-even {
+  background-color: #F8F8F8;
+}
+
+#views-exposed-form-course-catalogue-page {
+  padding: 10px;
+}

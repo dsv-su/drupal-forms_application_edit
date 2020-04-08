@@ -1,0 +1,4 @@
+name = Application Edit module
+description = Altering Webforms data
+core = 7.x
+stylesheets[all][] = application_edit.css
