@@ -53,7 +53,7 @@ function application_edit_views_post_execute(&$view)
       $datestart = $course->field_field_application_date[0]['raw']['value'] ?? null;
       $dateend = $course->field_field_application_date[0]['raw']['value2'] ?? null;
       if (strtotime($datestart) < time() && strtotime($dateend) > time()) {
-        $course->field_field_application_date[0]['rendered']['#markup'] .= "<p><a href='node/1?course=$course->nid'>Apply for this course ></a></p>";
+        $course->field_field_application_date[0]['rendered']['#markup'] .= "<h2><a href='node/1?course=$course->nid'>Apply for this course ></a></h2>";
       }
     }
   }

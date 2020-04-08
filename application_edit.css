@@ -11,9 +11,13 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.view-course-catalogue .views-field-title {
+.view-course-catalogue .views-field-title,
+.view-course-catalogue .views-field-title a,
+.view-course-catalogue .views-field-title a:visited
+ {
   font-size: 20px;
   margin-bottom: 10px;
+  color: #002e5f;
 }
 
 .view-course-catalogue .views-field-body .field-content {
@@ -25,12 +29,12 @@
   display: inline;
 }
 
-.view-course-catalogue .views-field-field-application-date .field-content p {
-  margin: 10px 0 20px;
+.view-course-catalogue .views-label-field-application-date {
   font-weight: 600;
 }
 
-.view-course-catalogue .views-field-field-application-date .field-content .date-display-range {
+.view-course-catalogue .views-field-field-application-date .field-content h2 {
+  margin: 10px 0 20px;
   font-weight: 600;
 }
 
@@ -42,4 +46,15 @@
 
 #views-exposed-form-course-catalogue-page {
   padding: 10px;
+}
+
+.field-name-field-application-date {
+  margin-top: 10px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.field-name-field-application-date .field-label {
+  color: #002e5f;
+  font-size: 1.25em;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
 }
