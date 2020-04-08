@@ -32,7 +32,7 @@ function application_edit_form_webform_client_form_1_alter(&$form, &$form_state,
     foreach ($nodes as $course) {
       $datestart = field_get_items('node', $course, 'field_application_date')[0]['value'] ?? null;
       $dateend = field_get_items('node', $course, 'field_application_date')[0]['value2'] ?? null;
-      if (strtotime($datestart) > time() && strtotime($dateend) < time()) {
+      if (strtotime($datestart) > time() || strtotime($dateend) < time()) {
         unset($form['submitted']['course']['#options'][$course->nid]);
       }
     }
