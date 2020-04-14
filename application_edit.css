@@ -33,6 +33,10 @@
   font-weight: 600;
 }
 
+.view-course-catalogue .field-content {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
 .view-course-catalogue .views-field-field-application-date .field-content h2 {
   margin: 10px 0 20px;
   font-weight: 600;
