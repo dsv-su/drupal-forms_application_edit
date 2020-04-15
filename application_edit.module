@@ -7,12 +7,22 @@
 function application_edit_form_webform_client_form_1_alter(&$form, &$form_state, $form_id)
 {
   $courseid = $_GET['course'] ?? null;
+
+  //Remove options outside of the current date range.
+  $nodes = node_load_multiple(array(), array('type' => 'course'));
+  foreach ($nodes as $course) {
+    $datestart = field_get_items('node', $course, 'field_application_date')[0]['value'] ?? null;
+    $dateend = field_get_items('node', $course, 'field_application_date')[0]['value2'] ?? null;
+    if (strtotime($datestart) > time() || strtotime($dateend) < time()) {
+      unset($form['submitted']['course']['#options'][$course->nid]);
+    }
+  }
+
   if ($courseid) {
     $course = node_load($courseid);
 
     //Disable course id field.
-    $form['submitted']['course']['#disabled'] = true;
-
+    //$form['submitted']['course']['#disabled'] = true;
     //$description = field_get_items('node', $course, 'body')[0]['value'] ?? null;
 
     $datestart = field_get_items('node', $course, 'field_application_date')[0]['value'] ?? null;
@@ -24,18 +34,9 @@ function application_edit_form_webform_client_form_1_alter(&$form, &$form_state,
       drupal_set_message('This course is not available for applying', 'error');
       drupal_goto('node/' . $courseid);
     }
+
     //$form['submitted']['course_description']['#value'] = $description;
-    $form['submitted']['application_period']['#value'] = format_date(strtotime($datestart), 'only_date') . ' — ' . format_date(strtotime($dateend), 'only_date');
-  } else {
-    // if no course passed, then just remove options outside of the current date range.
-    $nodes = node_load_multiple(array(), array('type' => 'course'));
-    foreach ($nodes as $course) {
-      $datestart = field_get_items('node', $course, 'field_application_date')[0]['value'] ?? null;
-      $dateend = field_get_items('node', $course, 'field_application_date')[0]['value2'] ?? null;
-      if (strtotime($datestart) > time() || strtotime($dateend) < time()) {
-        unset($form['submitted']['course']['#options'][$course->nid]);
-      }
-    }
+    //$form['submitted']['application_period']['#value'] = format_date(strtotime($datestart), 'only_date') . ' — ' . format_date(strtotime($dateend), 'only_date');
   }
 }
 
@@ -44,7 +45,6 @@ function application_edit_preprocess_node(&$variables)
   if ($variables['type'] == 'webform') {
     $variables['submitted'] = '';
   }
-  $variables['test'] = views_embed_view('application_link', 'block', 5);
 }
 
 function application_edit_views_post_execute(&$view)
@@ -60,7 +60,8 @@ function application_edit_views_post_execute(&$view)
   }
 }
 
-function application_edit_node_view($node, $view_mode, $langcode) {
+function application_edit_node_view($node, $view_mode, $langcode)
+{
   if ($node->type == 'course') {
     $node->content['application_link'] = array('#markup' => views_embed_view('application_link', 'block', $node->nid));
     $node->content['application_link']['#weight'] = 99;
