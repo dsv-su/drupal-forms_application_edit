@@ -80,3 +80,16 @@
 .webform-component--course-description {
   font-size: 1.5em;
 }
+
+.form-control {
+  width: auto;
+}
+
+input[type=text],
+input[type=email] {
+  max-width: 300px;
+}
+
+.form-actions {
+  margin-top: 10px;
+}
