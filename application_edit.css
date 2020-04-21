@@ -13,11 +13,19 @@
 
 .view-course-catalogue .views-field-title,
 .view-course-catalogue .views-field-title a,
-.view-course-catalogue .views-field-title a:visited
+.view-course-catalogue .views-field-title a:visited,
+.field-name-field-link-to-webform .field-item,
+.field-name-field-link-to-webform .field-item a,
+.field-name-field-link-to-webform .field-item a:visited,
+.views-field-field-link-to-webform,
+.views-field-field-link-to-webform a,
+.views-field-field-link-to-webform a:visited
  {
-  font-size: 20px;
+  margin-top: 10px;
   margin-bottom: 10px;
   color: #002e5f;
+  font-weight: 600;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .view-course-catalogue .views-field-body .field-content {
@@ -29,6 +37,7 @@
   display: inline;
 }
 
+.view-course-catalogue .views-field-field-link-to-webform,
 .view-course-catalogue .views-label-field-application-date {
   font-weight: 600;
 }
@@ -40,6 +49,10 @@
 .view-course-catalogue .views-field-field-application-date .field-content h2 {
   margin: 10px 0 20px;
   font-weight: 600;
+}
+
+.view-course-catalogue .views-field-field-link-to-webform {
+  margin-top: 10px;
 }
 
 .view-course-catalogue .views-row {
@@ -57,8 +70,13 @@
   font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
+.field-name-field-link-to-webform .field-item,
 .field-name-field-application-date .field-label {
   color: #002e5f;
   font-size: 1.25em;
   font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+.webform-component--course-description {
+  font-size: 1.5em;
 }

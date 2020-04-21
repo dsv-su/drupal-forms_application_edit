@@ -45,6 +45,11 @@ function application_edit_preprocess_node(&$variables)
   if ($variables['type'] == 'webform') {
     $variables['submitted'] = '';
   }
+  $datestart = $variables['field_application_date']['und'][0]['value'] ?? null;
+  $dateend = $variables['field_application_date']['und'][0]['value2'] ?? null;
+  if (strtotime($datestart) > time() || strtotime($dateend) < time()) {
+    hide($variables['content']['field_link_to_webform']);
+  }
 }
 
 function application_edit_views_post_execute(&$view)
@@ -53,17 +58,10 @@ function application_edit_views_post_execute(&$view)
     foreach ($view->result as $course) {
       $datestart = $course->field_field_application_date[0]['raw']['value'] ?? null;
       $dateend = $course->field_field_application_date[0]['raw']['value2'] ?? null;
-      if (strtotime($datestart) < time() && strtotime($dateend) > time()) {
-        $course->field_field_application_date[0]['rendered']['#markup'] .= "<h2><a href='node/1?course=$course->nid'>Apply for this course ></a></h2>";
+      if (strtotime($datestart) > time() || strtotime($dateend) < time()) {
+        //$course->field_field_application_date[0]['rendered']['#markup'] .= "<h2><a href='node/1?course=$course->nid'>Apply for this course ></a></h2>";
+        unset($course->field_field_link_to_webform);
       }
     }
-  }
-}
-
-function application_edit_node_view($node, $view_mode, $langcode)
-{
-  if ($node->type == 'course') {
-    $node->content['application_link'] = array('#markup' => views_embed_view('application_link', 'block', $node->nid));
-    $node->content['application_link']['#weight'] = 99;
   }
 }
