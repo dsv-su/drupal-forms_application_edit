@@ -6,6 +6,7 @@
 
 function application_edit_form_webform_client_form_1_alter(&$form, &$form_state, $form_id)
 {
+  /*
   $courseid = $_GET['course'] ?? null;
 
   //Remove options outside of the current date range.
@@ -38,6 +39,7 @@ function application_edit_form_webform_client_form_1_alter(&$form, &$form_state,
     //$form['submitted']['course_description']['#value'] = $description;
     //$form['submitted']['application_period']['#value'] = format_date(strtotime($datestart), 'only_date') . ' — ' . format_date(strtotime($dateend), 'only_date');
   }
+  */
 }
 
 function application_edit_preprocess_node(&$variables)
@@ -45,15 +47,17 @@ function application_edit_preprocess_node(&$variables)
   if ($variables['type'] == 'webform') {
     $variables['submitted'] = '';
   }
+  /*
   $datestart = $variables['field_application_date']['und'][0]['value'] ?? null;
   $dateend = $variables['field_application_date']['und'][0]['value2'] ?? null;
   if (strtotime($datestart) > time() || strtotime($dateend) < time()) {
     hide($variables['content']['field_link_to_webform']);
-  }
+  }*/
 }
 
 function application_edit_views_post_execute(&$view)
 {
+  /*
   if ($view->name == 'course_catalogue') {
     foreach ($view->result as $course) {
       $datestart = $course->field_field_application_date[0]['raw']['value'] ?? null;
@@ -64,4 +68,5 @@ function application_edit_views_post_execute(&$view)
       }
     }
   }
+  */
 }
