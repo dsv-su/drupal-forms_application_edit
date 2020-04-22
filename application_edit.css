@@ -77,7 +77,8 @@
   font-family: Verdana, Arial, Helvetica, sans-serif;
 }
 
-.webform-component--course-description {
+.webform-component--course-description,
+.webform-confirmation {
   font-size: 1.5em;
 }
 
@@ -92,4 +93,8 @@ input[type=email] {
 
 .form-actions {
   margin-top: 10px;
+}
+
+.webform-confirmation+.links {
+  display: none;
 }
