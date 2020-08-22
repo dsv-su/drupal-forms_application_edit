@@ -98,3 +98,7 @@ input[type=email] {
 .webform-confirmation+.links {
   display: none;
 }
+
+.webform-component-markup {
+  font-size: 16px;
+}
